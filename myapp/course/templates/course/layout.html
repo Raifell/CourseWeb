@@ -15,7 +15,7 @@
         <a href="{% url 'main_page' %}">Главная страница</a>
         <a href="{% url 'add_course_page' %}">Добавить курс</a>
         <a href="{% url 'add_module_page' %}">Добавить модуль</a>
-        <a href="">Добавить урок</a>
+        <a href="{% url 'add_lesson_page' %}">Добавить урок</a>
     </section>
     <section class="content">
         {% block content %}{% endblock %}

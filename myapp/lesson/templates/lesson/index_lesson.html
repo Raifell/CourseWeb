@@ -1,0 +1,14 @@
+{% extends 'course/layout.html' %}
+
+{% block content %}
+    <div class="description">
+        <h1>{{ lesson.title }}</h1>
+        <p>{{ lesson.content|linebreaks }}</p>
+        <p>Duration: {{ lesson.duration }}</p>
+        <p style="display: flex; gap: 40px;">
+            <a href="{% url 'delete_lesson_page' lesson.slug %}">Удалить &#10060;</a>
+            <a href="{% url 'edit_lesson_page' lesson.slug %}">Редактировать &#9998;</a>
+            <a href="{% url 'module_page' lesson.module.title %}">Назад &rarr;</a>
+        </p>
+    </div>
+{% endblock %}

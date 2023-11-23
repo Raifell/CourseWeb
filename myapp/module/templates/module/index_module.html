@@ -3,12 +3,20 @@
 {% block content %}
     <div class="description">
         <h1>{{ module.title }}</h1>
-        <p>{{ module.description }}</p>
-        <p>{{ module.average }}</p>
+        <p>{{ module.description|linebreaks }}</p>
+        <p>Duration: {{ module.average }}</p>
         <p style="display: flex; gap: 40px;">
             <a href="{% url 'delete_module_page' module.title %}">Удалить &#10060;</a>
             <a href="{% url 'edit_module_page' module.title %}">Редактировать &#9998;</a>
             <a href="{% url 'course_page' module.course.title %}">Назад &rarr;</a>
         </p>
+    </div>
+    <div class="main">
+        {% for lesson in lessons %}
+            <div class="box_info">
+                <h4>{{ lesson.title }}</h4>
+                <a href="{% url 'lesson_page' lesson.slug %}">Перейти &rarr;</a>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

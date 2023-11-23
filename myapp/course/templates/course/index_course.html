@@ -4,7 +4,7 @@
     <div class="description">
         <h1>{{ course.title }}</h1>
         <p>{{ course.description }}</p>
-        <p>{{ course.average }}</p>
+        <p>Duration: {{ course.average }}</p>
         <p style="display: flex; gap: 40px;">
             <a href="{% url 'delete_course_page' course.title %}">Удалить &#10060;</a>
             <a href="{% url 'edit_course_page' course.title %}">Редактировать &#9998;</a>

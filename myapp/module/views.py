@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from lesson.models import *
 from .models import *
 from .forms import *
 
 
 def module_page(request, module_name):
     module = get_object_or_404(Module, title=module_name)
+    lessons = Lesson.objects.filter(module__pk=module.pk)
     context = {
         'title': 'Module page',
-        'module': module
+        'module': module,
+        'lessons': lessons,
     }
     return render(request, 'module/index_module.html', context)
 

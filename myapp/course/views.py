@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import *
 from module.models import *
@@ -15,7 +15,7 @@ def main_page(request):
 
 
 def course_page(request, course_name):
-    course = Course.objects.get(title=course_name)
+    course = get_object_or_404(Course, title=course_name)
     modules = Module.objects.filter(course__pk=course.pk)
     context = {
         'title': 'Course page',
@@ -41,7 +41,7 @@ def add_course_page(request):
 
 
 def edit_course_page(request, course_name):
-    course = Course.objects.get(title=course_name)
+    course = get_object_or_404(Course, title=course_name)
     form = CourseForm(initial={'title': course.title,
                                'description': course.description,
                                'average': course.average})
@@ -58,5 +58,5 @@ def edit_course_page(request, course_name):
 
 
 def delete_course_page(request, course_name):
-    Course.objects.get(title=course_name).delete()
+    get_object_or_404(Course, title=course_name).delete()
     return redirect('main_page')
