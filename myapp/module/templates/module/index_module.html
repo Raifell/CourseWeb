@@ -1,0 +1,14 @@
+{% extends 'course/layout.html' %}
+
+{% block content %}
+    <div class="description">
+        <h1>{{ module.title }}</h1>
+        <p>{{ module.description }}</p>
+        <p>{{ module.average }}</p>
+        <p style="display: flex; gap: 40px;">
+            <a href="{% url 'delete_module_page' module.title %}">Удалить &#10060;</a>
+            <a href="{% url 'edit_module_page' module.title %}">Редактировать &#9998;</a>
+            <a href="{% url 'course_page' module.course.title %}">Назад &rarr;</a>
+        </p>
+    </div>
+{% endblock %}

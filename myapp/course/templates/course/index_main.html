@@ -1,0 +1,12 @@
+{% extends 'course/layout.html' %}
+
+{% block content %}
+    <div class="main">
+        {% for course in courses %}
+            <div class="box_info">
+                <h4>{{ course.title }}</h4>
+                <a href="{% url 'course_page' course.title %}">Перейти &rarr;</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

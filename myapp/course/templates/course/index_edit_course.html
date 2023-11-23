@@ -1,0 +1,9 @@
+{% extends 'course/layout.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Обновить" style="margin-top: 10px;">
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'course/layout.html' %}
+
+{% block content %}
+    <div class="description">
+        <h1>{{ course.title }}</h1>
+        <p>{{ course.description }}</p>
+        <p>{{ course.average }}</p>
+        <p style="display: flex; gap: 40px;">
+            <a href="{% url 'delete_course_page' course.title %}">Удалить &#10060;</a>
+            <a href="{% url 'edit_course_page' course.title %}">Редактировать &#9998;</a>
+            <a href="{% url 'main_page' %}">Назад &rarr;</a>
+        </p>
+    </div>
+    <div class="main">
+        {% for module in modules %}
+            <div class="box_info">
+                <h4>{{ module.title }}</h4>
+                <a href="{% url 'module_page' module.title %}">Перейти &rarr;</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
